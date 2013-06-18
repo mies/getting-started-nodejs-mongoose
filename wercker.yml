@@ -1,5 +1,6 @@
 box: wercker/nodejs
-services: wercker/mongodb
+services:
+  - wercker/mongodb
 # Build definition
 build:
   # The steps that will be executed on build
