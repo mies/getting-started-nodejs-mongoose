@@ -1,0 +1,9 @@
+{"name": "getting-started-nodejs-mongoose",
+  "description": "Sample application built with node.js, mongoose, mongodb. Delivered by wercker.",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "express": "3.x",
+    "mongoose": "3.6.x"
+  }
+}
