@@ -26,16 +26,18 @@ app.get('/', function(req, res) {
 });
 
 app.get('/todos', function(req, res) {
+  Todo.find(function(err, result) {
+    res.send(result);
+  });
 });
 
 app.get('/todos/:todo', function(req, res) {
+  res.send({'foo':'bar'});
 });
 
 app.post('/todos', function(req, res) {
-  console.log(req.params);
-  console.log(req.body.title);
   new Todo({title: req.body.title, author: req.body.author}).save();
-  res.send({'new todo' : 'success'});
+  res.send({'new todo' : req.body.title});
 });
 
 // startup server
@@ -43,3 +45,5 @@ port = process.env.PORT || 5000;
 app.listen(port, function() {
   console.log("Listening on port number: ", port);
 });
+
+module.exports = app;
