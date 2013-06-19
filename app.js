@@ -2,8 +2,9 @@ var express = require('express');
 var mongoose = require ("mongoose");
 
 var app = express();
+app.use(express.bodyParser());
 
-var todo = require('./models/todo');
+var Todo = require('./models/todo');
 
 // Configure express
 app.configure('development', function() {
@@ -28,10 +29,13 @@ app.get('/todos', function(req, res) {
 });
 
 app.get('/todos/:todo', function(req, res) {
-})
+});
 
 app.post('/todos', function(req, res) {
+  console.log(req.params);
+  console.log(req.body.title);
   new Todo({title: req.body.title, author: req.body.author}).save();
+  res.send({'new todo' : 'success'});
 });
 
 // startup server
