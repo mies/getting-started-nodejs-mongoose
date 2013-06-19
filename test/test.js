@@ -3,8 +3,6 @@ var request = require('supertest'),
 
 var app = require('../app.js');
 
-console.log(process.env.NODE_ENV);
-
 describe('POST', function(){
   it('responds with a json success message', function(done){
     request(app)
