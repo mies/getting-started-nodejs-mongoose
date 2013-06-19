@@ -3,7 +3,19 @@ var mongoose = require ("mongoose");
 
 var app = express();
 
-var todo = require('models/todo');
+var todo = require('./models/todo');
+
+app.configure('development', function() {
+  mongoose.connect('mongodb://localhost/todos');
+});
+
+app.configure('test', function() {
+  mongoose.connect('mongodb://'+ process.env.WERCKER_MONGODB_HOST + '/todos');
+});
+
+app.configure('production', function() {
+  mongoose.connect('mongodb://localhost/todos');
+});
 
 app.get('/', function(req, res) {
   res.send({'version' : '0.0.1'});
