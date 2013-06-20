@@ -18,7 +18,7 @@ app.configure('test', function() {
 });
 
 app.configure('production', function() {
-  mongoose.connect('mongodb://' + process.env.process.env.MONGOLAB_URI + '/todos');
+  mongoose.connect('mongodb://' + process.env.MONGOLAB_URI + '/todos');
 });
 
 // Routes
