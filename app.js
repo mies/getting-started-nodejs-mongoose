@@ -1,3 +1,5 @@
+// Requires
+
 var express = require('express');
 var mongoose = require ("mongoose");
 
@@ -19,7 +21,6 @@ app.configure('production', function() {
   mongoose.connect('mongodb://localhost/todos');
 });
 
-
 // Routes
 app.get('/', function(req, res) {
   res.send({'version' : '0.0.1'});
@@ -31,13 +32,21 @@ app.get('/todos', function(req, res) {
   });
 });
 
-app.get('/todos/:todo', function(req, res) {
-  res.send({'foo':'bar'});
+app.get('/todos/:author', function(req, res) {
+  Todo.findOne({'author': req.params.author}, function(err, result) {
+    if (err) {
+      res.status(500);
+      res.send(err);
+    } else {
+      console.log(result);
+      res.send({result: result});
+    }
+  });
 });
 
 app.post('/todos', function(req, res) {
-  new Todo({title: req.body.title, author: req.body.author}).save();
-  res.send({'new todo' : req.body.title});
+  new Todo({action: req.body.action, author: req.body.author}).save();
+  res.send({'new todo' : req.body.action});
 });
 
 // startup server

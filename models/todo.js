@@ -4,6 +4,7 @@ var ObjectId = Schema.ObjectId;
 
 var todoSchema= new Schema({
   action: String,
+  author: String,
   creationDate: {type: Date, 'default': Date.now},
 });
 
