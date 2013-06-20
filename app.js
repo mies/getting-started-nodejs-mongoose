@@ -38,7 +38,6 @@ app.get('/todos/:author', function(req, res) {
       res.status(500);
       res.send(err);
     } else {
-      console.log(result);
       res.send({result: result});
     }
   });
