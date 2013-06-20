@@ -18,7 +18,7 @@ app.configure('test', function() {
 });
 
 app.configure('production', function() {
-  mongoose.connect('mongodb://localhost/todos');
+  mongoose.connect('mongodb://' + process.env.WERCKER_MONGODB_HOST' + /todos');
 });
 
 // Routes
