@@ -51,7 +51,7 @@ app.post('/todos', function(req, res) {
 // startup server
 port = process.env.PORT || 5000;
 app.listen(port, function() {
-  console.log("Listening on port number: ", port);
+  console.log("Application listening on port number: ", port);
 });
 
 module.exports = app;
